@@ -44,7 +44,7 @@ $nombre=$_POST['nombre'];
 <?php
 // Funciones utilizadas en el programa
 function alta ($idcat,$nombre,$db){
-$sql = "INSERT INTO categoria VALUES('$idcat','$nombre')";
+$sql = 'INSERT INTO categoria VALUES("$idcat","$nombre")';
 mysqli_query($db,$sql);
 }
 ?>
