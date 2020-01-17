@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<h1>ALTA PRODUCTOS - Nombre del alumno</h1>
+<h1>ALTA PRODUCTOS - DAVID PEREZ</h1>
 <?php
 include "conexion.php";
 
@@ -66,7 +66,7 @@ crearproducto($idproducto,$nombre,$precio,$cate,$db);
 // Funciones utilizadas en el programa
 function obtenercategoria($db){
     $categoria = array();	
-	$sql = "SELECT nombre FROM CATEGORIA";
+	$sql = "SELECT NOMBRE FROM CATEGORIA";
 	$resultado = mysqli_query($db, $sql);
 	if ($resultado) {
 		while ($row = mysqli_fetch_assoc($resultado)) {
