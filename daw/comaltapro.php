@@ -51,7 +51,7 @@ $idproducto=$_POST['idproducto'];
 $nombre=$_POST['nombre'];
 $precio=$_POST['precio'];
 $cates=$_POST['categoria'];
-$sql3 = "SELECT id_categoria FROM categoria WHERE nombre = '$cates'";
+$sql3 = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE = '$cates'";
 $catego = $db->query($sql3);
 if ( $catego ) {
 while ($row = mysqli_fetch_assoc($catego)) {
@@ -66,7 +66,7 @@ crearproducto($idproducto,$nombre,$precio,$cate,$db);
 // Funciones utilizadas en el programa
 function obtenercategoria($db){
     $categoria = array();	
-	$sql = "SELECT nombre FROM categoria";
+	$sql = "SELECT nombre FROM CATEGORIA";
 	$resultado = mysqli_query($db, $sql);
 	if ($resultado) {
 		while ($row = mysqli_fetch_assoc($resultado)) {
@@ -76,7 +76,7 @@ function obtenercategoria($db){
 	return $categoria;
 }
 function crearproducto($id,$nom,$pre,$cate,$db){
-    $sql = "INSERT INTO producto VALUES('$id','$nom','$pre','$cate')";
+    $sql = "INSERT INTO PRODUCTO VALUES('$id','$nom','$pre','$cate')";
     mysqli_query($db,$sql);
 }
 
