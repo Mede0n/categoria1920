@@ -1,83 +1,83 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web compras</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-</head>
+<HTML>
+<HEAD>
+    <META CHARSET="UTF-8">
+    <META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH, INITIAL-SCALE=1.0">
+    <META HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EDGE">
+    <TITLE>WEB COMPRAS</TITLE>
+    <LINK REL="STYLESHEET" HREF="BOOTSTRAP.MIN.CSS">
+</HEAD>
 
-<body>
-<h1>ALTA PRODUCTOS - DAVID PEREZ</h1>
-<?php
-include "conexion.php";
+<BODY>
+<H1>ALTA PRODUCTOS - DAVID PEREZ</H1>
+<?PHP
+INCLUDE "CONEXION.PHP";
 
 
-/* Se muestra el formulario la primera vez */
-if (!isset($_POST) || empty($_POST)) { 
-    $categorias = obtenercategoria($db);
-    /* Se inicializa la lista valores*/
-	echo '<form action="" method="post">';
+/* SE MUESTRA EL FORMULARIO LA PRIMERA VEZ */
+IF (!ISSET($_POST) || EMPTY($_POST)) { 
+    $CATEGORIAS = OBTENERCATEGORIA($DB);
+    /* SE INICIALIZA LA LISTA VALORES*/
+	ECHO '<FORM ACTION="" METHOD="POST">';
 ?>
-<div class="container ">
-<!--Aplicacion-->
-<div class="card border-success mb-3" style="max-width: 30rem;">
-<div class="card-header">Datos Producto</div>
-<div class="card-body">
-		<div class="form-group">
-        ID PRODUCTO <input type="text" name="idproducto" placeholder="idproducto" class="form-control">
-        </div>
-		<div class="form-group">
-        NOMBRE PRODUCTO <input type="text" name="nombre" placeholder="nombre" class="form-control">
-        </div>
-		<div class="form-group">
-        PRECIO PRODUCTO <input type="text" name="precio" placeholder="precio" class="form-control">
-        </div>
-        <div>
-        <label for="categoria">Categorias:</label>
-	<select name="categoria">
-		<?php foreach($categorias as $categoria) : ?>
-			<option> <?php echo $categoria ?> </option>
-		<?php endforeach; ?>
-	</select>
-	<br>
-        </div>
+<DIV CLASS="CONTAINER ">
+<!--APLICACION-->
+<DIV CLASS="CARD BORDER-SUCCESS MB-3" STYLE="MAX-WIDTH: 30REM;">
+<DIV CLASS="CARD-HEADER">DATOS PRODUCTO</DIV>
+<DIV CLASS="CARD-BODY">
+		<DIV CLASS="FORM-GROUP">
+        ID PRODUCTO <INPUT TYPE="TEXT" NAME="IDPRODUCTO" PLACEHOLDER="IDPRODUCTO" CLASS="FORM-CONTROL">
+        </DIV>
+		<DIV CLASS="FORM-GROUP">
+        NOMBRE PRODUCTO <INPUT TYPE="TEXT" NAME="NOMBRE" PLACEHOLDER="NOMBRE" CLASS="FORM-CONTROL">
+        </DIV>
+		<DIV CLASS="FORM-GROUP">
+        PRECIO PRODUCTO <INPUT TYPE="TEXT" NAME="PRECIO" PLACEHOLDER="PRECIO" CLASS="FORM-CONTROL">
+        </DIV>
+        <DIV>
+        <LABEL FOR="CATEGORIA">CATEGORIAS:</LABEL>
+	<SELECT NAME="CATEGORIA">
+		<?PHP FOREACH($CATEGORIAS AS $CATEGORIA) : ?>
+			<OPTION> <?PHP ECHO $CATEGORIA ?> </OPTION>
+		<?PHP ENDFOREACH; ?>
+	</SELECT>
+	<BR>
+        </DIV>
 	</BR>
-<?php
-	echo '<div><input type="submit" value="Alta Producto"></div>
-	</form>';
-} else { 
-$idproducto=$_POST['idproducto'];
-$nombre=$_POST['nombre'];
-$precio=$_POST['precio'];
-$cates=$_POST['categoria'];
-$sql3 = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE = '$cates'";
-$catego = $db->query($sql3);
-if ( $catego ) {
-while ($row = mysqli_fetch_assoc($catego)) {
-        $cate = $row['id_categoria'];
+<?PHP
+	ECHO '<DIV><INPUT TYPE="SUBMIT" VALUE="ALTA PRODUCTO"></DIV>
+	</FORM>';
+} ELSE { 
+$IDPRODUCTO=$_POST['IDPRODUCTO'];
+$NOMBRE=$_POST['NOMBRE'];
+$PRECIO=$_POST['PRECIO'];
+$CATES=$_POST['CATEGORIA'];
+$SQL3 = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE NOMBRE = '$CATES'";
+$CATEGO = $DB->QUERY($SQL3);
+IF ( $CATEGO ) {
+WHILE ($ROW = MYSQLI_FETCH_ASSOC($CATEGO)) {
+        $CATE = $ROW['ID_CATEGORIA'];
     }
     }
-crearproducto($idproducto,$nombre,$precio,$cate,$db);	
+CREARPRODUCTO($IDPRODUCTO,$NOMBRE,$PRECIO,$CATE,$DB);	
 }
 ?>
 
-<?php
-// Funciones utilizadas en el programa
-function obtenercategoria($db){
-    $categoria = array();	
-	$sql = "SELECT NOMBRE FROM CATEGORIA";
-	$resultado = mysqli_query($db, $sql);
-	if ($resultado) {
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			$categoria[] = $row['nombre'];
+<?PHP
+// FUNCIONES UTILIZADAS EN EL PROGRAMA
+FUNCTION OBTENERCATEGORIA($DB){
+    $CATEGORIA = ARRAY();	
+	$SQL = "SELECT NOMBRE FROM CATEGORIA";
+	$RESULTADO = MYSQLI_QUERY($DB, $SQL);
+	IF ($RESULTADO) {
+		WHILE ($ROW = MYSQLI_FETCH_ASSOC($RESULTADO)) {
+			$CATEGORIA[] = $ROW['NOMBRE'];
 		}
 	}
-	return $categoria;
+	RETURN $CATEGORIA;
 }
-function crearproducto($id,$nom,$pre,$cate,$db){
-    $sql = "INSERT INTO PRODUCTO VALUES('$id','$nom','$pre','$cate')";
-    mysqli_query($db,$sql);
+FUNCTION CREARPRODUCTO($ID,$NOM,$PRE,$CATE,$DB){
+    $SQL = "INSERT INTO PRODUCTO VALUES('$ID','$NOM','$PRE','$CATE')";
+    MYSQLI_QUERY($DB,$SQL);
 }
 
 
@@ -90,6 +90,6 @@ function crearproducto($id,$nom,$pre,$cate,$db){
 
 
 
-</body>
+</BODY>
 
-</html>
+</HTML>
