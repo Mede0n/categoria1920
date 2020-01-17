@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<h1>ALTA CATEGORÍAS - Nombre del alumno</h1>
+<h1>ALTA CATEGORÍAS - David Perez</h1>
 <?php
 include "conexion.php";
 
@@ -44,7 +44,7 @@ $nombre=$_POST['nombre'];
 <?php
 // Funciones utilizadas en el programa
 function alta ($idcat,$nombre,$db){
-$sql = 'INSERT INTO categoria VALUES("$idcat","$nombre")';
+$sql = 'INSERT INTO categoria VALUES($idcat,$nombre)';
 mysqli_query($db,$sql);
 }
 ?>
